@@ -1,0 +1,44 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- Warm ivory and clay: sits naturally next to the Claude app without using its branding. -->
+
+  <SolidColorBrush x:Key="Brush.Window" Color="#FAF9F5" />
+  <SolidColorBrush x:Key="Brush.Sidebar" Color="#F3F1EA" />
+  <SolidColorBrush x:Key="Brush.Surface" Color="#FFFFFF" />
+  <SolidColorBrush x:Key="Brush.SurfaceHover" Color="#F6F4EE" />
+  <SolidColorBrush x:Key="Brush.SurfacePressed" Color="#EEEBE2" />
+  <SolidColorBrush x:Key="Brush.Border" Color="#E9E5DA" />
+  <SolidColorBrush x:Key="Brush.BorderStrong" Color="#D9D3C5" />
+  <SolidColorBrush x:Key="Brush.Text" Color="#1F1E1C" />
+  <SolidColorBrush x:Key="Brush.TextMuted" Color="#6B675E" />
+  <SolidColorBrush x:Key="Brush.TextSubtle" Color="#9C978B" />
+
+  <SolidColorBrush x:Key="Brush.Accent" Color="#B85B3B" />
+  <SolidColorBrush x:Key="Brush.AccentHover" Color="#A64F31" />
+  <SolidColorBrush x:Key="Brush.AccentPressed" Color="#954529" />
+  <SolidColorBrush x:Key="Brush.OnAccent" Color="#FFFFFF" />
+  <SolidColorBrush x:Key="Brush.AccentSoft" Color="#F5E7E0" />
+  <SolidColorBrush x:Key="Brush.AccentText" Color="#A24D2F" />
+
+  <SolidColorBrush x:Key="Brush.Danger" Color="#B3261E" />
+  <SolidColorBrush x:Key="Brush.DangerSurface" Color="#FBEAE8" />
+  <SolidColorBrush x:Key="Brush.Success" Color="#2E8B57" />
+  <SolidColorBrush x:Key="Brush.SuccessSoft" Color="#E5F3EA" />
+  <SolidColorBrush x:Key="Brush.Warning" Color="#B7791F" />
+  <SolidColorBrush x:Key="Brush.Focus" Color="#B85B3B" />
+
+  <SolidColorBrush x:Key="Brush.Overlay" Color="#FFFFFF" />
+  <SolidColorBrush x:Key="Brush.OverlayHover" Color="#F8F6F1" />
+  <SolidColorBrush x:Key="Brush.OverlayBorder" Color="#E2DDD1" />
+  <SolidColorBrush x:Key="Brush.Menu" Color="#FFFFFF" />
+  <SolidColorBrush x:Key="Brush.MenuHover" Color="#F4F1EA" />
+  <SolidColorBrush x:Key="Brush.Badge" Color="#EFECE4" />
+  <SolidColorBrush x:Key="Brush.Notice" Color="#FBF3EA" />
+  <SolidColorBrush x:Key="Brush.NoticeBorder" Color="#EEDCC7" />
+  <SolidColorBrush x:Key="Brush.ToggleOff" Color="#D2CCBF" />
+  <SolidColorBrush x:Key="Brush.NavHover" Color="#EAE7DE" />
+  <SolidColorBrush x:Key="Brush.NavSelected" Color="#E6E2D7" />
+  <SolidColorBrush x:Key="Brush.ScrollThumb" Color="#CFC8B9" />
+  <SolidColorBrush x:Key="Brush.ScrollThumbHover" Color="#ADA696" />
+  <SolidColorBrush x:Key="Brush.CaptionHover" Color="#E8E5DC" />
+</ResourceDictionary>

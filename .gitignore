@@ -1,0 +1,52 @@
+# ---------------------------------------------------------------------------
+# Build output and IDE files
+# ---------------------------------------------------------------------------
+bin/
+obj/
+artifacts/
+publish/
+TestResults/
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.rsuser
+*.swp
+
+# ---------------------------------------------------------------------------
+# Profile and data folders: never commit these.
+# Tandem keeps all of its data in %APPDATA%\Tandem and %LOCALAPPDATA%\Tandem,
+# outside the repository. The patterns below are a safety net in case a
+# profile folder, a Claude data folder or Tandem's own data ever ends up
+# inside the working tree.
+# ---------------------------------------------------------------------------
+/Profiles/
+/profiles/
+/data/
+/logs/
+profiles.json
+profiles.*.json
+settings.json
+state.json
+*.log
+
+# Chromium / Electron user-data markers (a Claude data folder)
+Local State
+lockfile
+Cookies
+Cookies-journal
+Login Data
+Login Data-journal
+Web Data
+Web Data-journal
+Preferences
+Network/
+Local Storage/
+Session Storage/
+IndexedDB/
+blob_storage/
+Partitions/
+Crashpad/
+GPUCache/
+Code Cache/

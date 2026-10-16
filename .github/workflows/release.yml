@@ -1,0 +1,74 @@
+name: Release
+
+# Push a tag such as v0.1.0 to build Tandem.exe, check it, and publish a GitHub release with
+# the exe, its SHA-256 and the matching CHANGELOG.md section as release notes.
+on:
+  push:
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Version from the tag
+        id: version
+        run: |
+          $version = "${{ github.ref_name }}".TrimStart('v')
+          "version=$version" >> $env:GITHUB_OUTPUT
+
+      - name: Test
+        run: dotnet test --configuration Release
+
+      - name: Publish
+        run: dotnet publish src/Tandem.App --configuration Release --output publish -p:Version=${{ steps.version.outputs.version }}
+
+      - name: Checksum
+        id: checksum
+        run: |
+          $hash = (Get-FileHash publish/Tandem.exe -Algorithm SHA256).Hash.ToLowerInvariant()
+          "$hash  Tandem.exe" | Out-File -FilePath publish/Tandem.exe.sha256 -Encoding ascii -NoNewline
+          "sha256=$hash" >> $env:GITHUB_OUTPUT
+
+      - name: Release notes
+        run: |
+          $version = '${{ steps.version.outputs.version }}'
+          $lines = Get-Content CHANGELOG.md
+          $start = [Array]::FindIndex($lines, [Predicate[string]] { param($l) $l.StartsWith("## [$version]") })
+          if ($start -lt 0) { throw "CHANGELOG.md has no section for $version." }
+          $end = [Array]::FindIndex($lines, $start + 1, [Predicate[string]] { param($l) $l.StartsWith('## ') -or $l.StartsWith('[') })
+          if ($end -lt 0) { $end = $lines.Length }
+          $notes = @(
+            $lines[($start + 1)..($end - 1)]
+            ''
+            '## Download'
+            ''
+            '**[Tandem.exe](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/Tandem.exe)**: one file, no installer, no administrator rights. Windows 10 (2004 or later) or 11, 64-bit, with the Claude desktop app installed.'
+            ''
+            'SHA-256: `${{ steps.checksum.outputs.sha256 }}`'
+            ''
+            'Not code-signed yet: if SmartScreen shows *Windows protected your PC*, choose **More info → Run anyway**.'
+          )
+          $notes -join "`n" | Out-File -FilePath notes.md -Encoding utf8
+
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >
+          gh release create "${{ github.ref_name }}"
+          publish/Tandem.exe publish/Tandem.exe.sha256
+          --title "Tandem ${{ steps.version.outputs.version }}"
+          --notes-file notes.md
+          --verify-tag

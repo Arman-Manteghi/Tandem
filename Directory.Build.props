@@ -1,0 +1,22 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Deterministic>true</Deterministic>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <DebugType Condition="'$(Configuration)' == 'Release'">embedded</DebugType>
+    <!-- Release builds record source paths as /_/…, never the folders of the machine that built them. -->
+    <PathMap Condition="'$(Configuration)' == 'Release'">$(MSBuildThisFileDirectory)=/_/</PathMap>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+
+    <Version>0.1.0</Version>
+    <Product>Tandem</Product>
+    <Authors>Arman Manteghi</Authors>
+    <Company>Arman Manteghi</Company>
+    <Copyright>Copyright (c) 2026 Arman Manteghi</Copyright>
+    <RepositoryUrl>https://github.com/Arman-Manteghi/Tandem</RepositoryUrl>
+    <Description>Unofficial account switcher for the Claude desktop app on Windows. Not affiliated with or endorsed by Anthropic.</Description>
+  </PropertyGroup>
+</Project>

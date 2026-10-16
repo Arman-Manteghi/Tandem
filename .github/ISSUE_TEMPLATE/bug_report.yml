@@ -1,0 +1,57 @@
+name: Bug report
+description: Something does not work as described.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please never paste sign-in data, tokens, cookies or files from a
+        Claude data folder here. Security problems go through the
+        [security policy](https://github.com/Arman-Manteghi/Tandem/security/policy) instead.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+      placeholder: |
+        1. Opened the switcher and picked "Work"
+        2. Expected the Work window to come to the front
+        3. Instead…
+    validations:
+      required: true
+  - type: input
+    id: tandem
+    attributes:
+      label: Tandem version
+      description: Shown on the About page.
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: claude
+    attributes:
+      label: Claude app version
+      description: In Claude, Help → About.
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      description: Run `winver`.
+      placeholder: "Windows 11 24H2"
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log
+      description: |
+        Relevant lines from `%LOCALAPPDATA%\Tandem\logs\tandem-<date>.log`. The log contains
+        account ids only, no names or links.
+      render: text
+  - type: textarea
+    id: more
+    attributes:
+      label: Anything else
+      description: Screenshots, how many accounts you use, whether the switch button is on, …

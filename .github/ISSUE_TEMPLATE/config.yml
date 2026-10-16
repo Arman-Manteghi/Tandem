@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security problem
+    url: https://github.com/Arman-Manteghi/Tandem/security/advisories/new
+    about: Please report vulnerabilities privately, not in a public issue.
+  - name: Problem with the Claude app itself
+    url: https://support.anthropic.com
+    about: Tandem is unofficial; problems inside Claude go to Anthropic's support.

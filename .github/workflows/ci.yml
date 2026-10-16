@@ -28,7 +28,7 @@ jobs:
       - name: Publish
         run: dotnet publish src/Tandem.App --configuration Release --output publish
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: Tandem
           path: publish/Tandem.exe

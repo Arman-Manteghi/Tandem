@@ -1,0 +1,77 @@
+<Window x:Class="Tandem.App.Views.ProfileDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:c="clr-namespace:Tandem.App.Controls"
+        Style="{StaticResource Window.Dialog}"
+        Width="500" SizeToContent="Height" ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
+        Icon="pack://application:,,,/Tandem;component/Assets/Tandem.ico">
+  <Grid>
+    <StackPanel Margin="32,28,32,28">
+      <!-- Live preview of the account's avatar -->
+      <Grid Width="56" Height="56" HorizontalAlignment="Left" Margin="0,0,0,18">
+        <Border x:Name="PreviewAvatar" CornerRadius="28">
+          <TextBlock x:Name="PreviewInitial" FontFamily="{StaticResource Font.Display}" FontSize="25" Foreground="White"
+                     HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,2" />
+        </Border>
+      </Grid>
+      <TextBlock x:Name="Heading" Style="{StaticResource Text.Title}" />
+      <TextBlock x:Name="Intro" Style="{StaticResource Text.Muted}" FontSize="13" Margin="0,6,0,22" />
+
+      <TextBlock Text="Name" Style="{StaticResource Text.Section}" FontSize="13" Margin="0,0,0,7" />
+      <TextBox x:Name="NameBox" MaxLength="40" TextChanged="OnNameChanged" />
+
+      <TextBlock Text="Color" Style="{StaticResource Text.Section}" FontSize="13" Margin="0,20,0,8" />
+      <WrapPanel x:Name="Swatches" Margin="-4,0,0,0" />
+
+      <TextBlock Text="Subscription" Style="{StaticResource Text.Section}" FontSize="13" Margin="0,16,0,8" />
+      <Border Style="{StaticResource SegmentBar}">
+        <StackPanel x:Name="PlanBar" Orientation="Horizontal" />
+      </Border>
+      <TextBlock Style="{StaticResource Text.Caption}" Margin="0,7,0,0"
+                 Text="Shown on the account. Tandem cannot see your subscription itself, so it shows what you pick here." />
+
+      <Border x:Name="CopyPanel" Style="{StaticResource Card}" Margin="0,18,0,0" Padding="16,14" Background="{DynamicResource Brush.Sidebar}">
+        <StackPanel>
+          <CheckBox x:Name="HistoryCheck" Style="{StaticResource CheckBox.Plain}">
+            <StackPanel>
+              <TextBlock Text="Bring this account's Claude Code and Cowork history" FontSize="13" Foreground="{DynamicResource Brush.Text}" />
+              <TextBlock Style="{StaticResource Text.Caption}" Margin="0,2,0,0"
+                         Text="From your original Claude, if you used this account there before. Sign-in is never copied." />
+            </StackPanel>
+          </CheckBox>
+          <Border Height="1" Margin="0,12" Background="{DynamicResource Brush.Border}" />
+
+          <StackPanel x:Name="SyncInfo" Orientation="Horizontal">
+            <TextBlock Text="&#xE73E;" Style="{StaticResource Text.Icon}" FontSize="12" Width="28" VerticalAlignment="Top" Margin="0,2,0,0"
+                       Foreground="{DynamicResource Brush.Success}" />
+            <TextBlock Style="{StaticResource Text.Muted}" MaxWidth="360"
+                       Text="App setup stays the same as your original Claude: MCP servers, extensions, settings, SSH connections and Code presets." />
+          </StackPanel>
+
+          <StackPanel x:Name="CopyRow">
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+              <CheckBox x:Name="CopyCheck" Style="{StaticResource CheckBox.Plain}" VerticalAlignment="Center"
+                        Content="Copy app setup from" Checked="OnCopyChanged" Unchecked="OnCopyChanged" />
+              <ComboBox x:Name="CopySource" Grid.Column="1" Margin="12,0,0,0" DisplayMemberPath="DisplayName"
+                        SelectionChanged="OnCopySourceChanged" />
+            </Grid>
+            <TextBlock x:Name="CopyDetails" Style="{StaticResource Text.Muted}" Margin="28,10,0,0" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+
+      <TextBlock x:Name="ErrorText" Margin="0,12,0,0" FontSize="12.5" TextWrapping="Wrap"
+                 Foreground="{DynamicResource Brush.Danger}" Visibility="Collapsed" />
+
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,26,0,0">
+        <Button Content="Cancel" IsCancel="True" Margin="0,0,8,0" />
+        <Button x:Name="OkButton" Style="{StaticResource Button.Primary}" IsDefault="True" Click="OnOk" MinWidth="110" />
+      </StackPanel>
+    </StackPanel>
+    <c:TitleBar ShowMinimize="False" ShowMaximize="False" />
+  </Grid>
+</Window>

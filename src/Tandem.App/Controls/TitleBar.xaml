@@ -1,0 +1,17 @@
+<UserControl x:Class="Tandem.App.Controls.TitleBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Height="40" VerticalAlignment="Top">
+  <Grid Background="Transparent">
+    <TextBlock x:Name="TitleText" Margin="16,0,0,0" VerticalAlignment="Center" FontSize="12"
+               Foreground="{DynamicResource Brush.TextSubtle}" />
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+      <Button x:Name="MinimizeButton" Style="{StaticResource Button.Caption}" Content="&#xE921;" Click="OnMinimize"
+              ToolTip="Minimize" />
+      <Button x:Name="MaximizeButton" Style="{StaticResource Button.Caption}" Content="&#xE922;" Click="OnMaximize"
+              ToolTip="Maximize" />
+      <Button x:Name="CloseButton" Style="{StaticResource Button.CaptionClose}" Content="&#xE8BB;" Click="OnClose"
+              ToolTip="Close" />
+    </StackPanel>
+  </Grid>
+</UserControl>
